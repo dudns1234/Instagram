@@ -1,0 +1,58 @@
+.card-header{
+    background-color: black;
+}
+
+.vsc-initialized{
+    background-color: black;
+}
+
+.card-body{
+    background-color: black;
+    color : white;
+}
+
+.card-footer{
+    background-color: black;
+    color : white;
+}
+
+.navbar{
+    background-color: black;
+}
+
+div.navbar-nav > a{
+    color : white;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.navbar-toggler.collapsed{
+    color: white;
+}
+
+div.col{
+    color : white;
+    text-align: center;
+}
+
+div.col-3{
+    color : white;
+    
+}
+
+div.images{
+    margin-top: 10%;
+    display: flex;
+}
+
+nav.profilenav{
+    background-color: black;
+}
+
+p#image_padding{
+    margin-top: 10px;
+}
+
+

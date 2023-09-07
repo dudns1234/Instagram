@@ -1,0 +1,58 @@
+{% extends 'base_profile.html' %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+<div class="row">
+    <div class="col-4">
+        <img src="{{user_info.profile_image.url}}" alt="" class="img-fluid rounded-circle">
+    </div>
+    <div class="col-8">
+        <div class="row">
+            <!-- <div class="col">{{user_info.username}}</div> -->
+            <!-- user : 로그인한 사람 user_info : 프로필페이지 유저 -->
+        </div>
+        <div class="row">
+            <div class="col">{{user_info.post_set.all|length}} <div>게시물</div></div>
+            <div class="col">{{user_info.followings.all|length}} <div>팔로워</div></div>
+            <div class="col">{{user_info.followers.all|length}} <div>팔로우</div></div>
+        </div>
+    </div>
+</div>
+
+<p style="color: white; margin-top: 10px;">{{user_info.first_name}}</p>
+
+{% if user != user_info %}
+    <div class="row">
+        <div class="col-6">
+            {% if user in user_info.followers.all %}
+                <a href="{% url 'accounts:follow' username=user_info.username %}" class="btn btn-secondary btn-sm d-block">팔로잉</a>
+            {% else %}
+                <a href="{% url 'accounts:follow' username=user_info.username %}" class="btn btn-primary btn-sm d-block">팔로우</a>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
+{% if user == user_info %}
+     <div class="row">  <!-- 기본 row 값은 12이기 때문에 col 범위도 12안으로 -->
+        <div class="col-6">
+            <a href="" class="btn btn-secondary btn-sm d-block">프로필 편집</a>
+        </div>
+        <div class="col-6">
+            <a href="" class="btn btn-secondary btn-sm d-block">프로필 공유</a>
+        </div>
+    </div>
+{% endif %}
+
+<div class="row row-cols-3 images g-0" style="background-color: black;">
+    {% for post in user_info.post_set.all %}
+        <div class="col">
+            <div class="card m-10"style="background-color: black;">
+                <img src="{{post.image.url}}" alt="">
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

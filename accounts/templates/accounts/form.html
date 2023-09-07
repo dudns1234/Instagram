@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block body %}
+
+{% if request.resolver_match.url_name == 'signup' %}
+    <h1 style="color: white;">Singup</h1>
+{% else %}
+    <h1 style="color: white;">Login</h1>
+{% endif %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class = "btn btn-primary">
+
+</form>
+
+{% endblock %}
